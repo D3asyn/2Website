@@ -32,5 +32,14 @@ router.post("/upload", (req, res) => {
 	);
 });
 
+router.get("/table", (req, res) => {
+	con.query("SELECT * FROM users", (err, result) => {
+		if (err) {
+			console.log(err);
+			res.status(500).send("Hiba történt az adatok lekérdezésekor.");
+		} else {
+			res.render("table", { users: result });
+		}
+	});
+});
 export default router;
-
