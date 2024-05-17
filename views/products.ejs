@@ -3,26 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World Reviews</title>
+    <title>Hello World Products</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <%- include('./partials/nav'); %>
+    <%- include('./partials/reviewModal'); %>
     <div class="container">
         <div class="row">
-            <% users.forEach(user => { %>
+            <% mobiles.forEach(mobile => { %>
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title"> User: <%= user.username %></h5>
-                            <p class="card-text"> Review: <%= user.comments %></p>
+                            <h5 class="card-title"> Brand: <%= mobile.Brand %></h5>
+                            <p class="card-text"> Model: <%= mobile.ModelName %></p>
+                            <p class="card-text"> Os: <%= mobile.ModelName %></p>
+                            <p class="card-text"> Release: <%= mobile.Release %></p>
                         </div>
                     </div>
                 </div>
             <% }); %>
         </div>
     </div>
-    <%- include('./partials/reviewModal'); %>
     <footer>
         <%- include('./partials/footer'); %>
     </footer>

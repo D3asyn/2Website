@@ -1,6 +1,8 @@
 import express from "express";
 import con from "./db.js";
 import __dirname from "./dirname.js";
+import info from "./info.js";
+import mobile from "./mobile.js";
 // const fs = require('fs');
 
 const router = express.Router();
@@ -9,10 +11,10 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
 router.get("/", (req, res) => {
-	res.send("Hello World!");
+	res.render("index");
 });
 
-router.get("/post", (req, res) => {
+router.get("/home", (req, res) => {
 	res.render("index");
 });
 
@@ -32,7 +34,7 @@ router.post("/upload", (req, res) => {
 	);
 });
 
-router.get("/table", (req, res) => {
+router.get("/reviews", (req, res) => {
 	con.query("SELECT * FROM users", (err, result) => {
 		if (err) {
 			console.log(err);
@@ -41,5 +43,16 @@ router.get("/table", (req, res) => {
 			res.render("table", { users: result });
 		}
 	});
+});
+
+router.get("/info", (req, res) => {
+	res.render("info", { infos: info });
+});
+
+router.get("/products", (req, res) => {
+	res.render("products", { mobiles: mobile });
+});
+router.get("/services", (req, res) => {
+	res.render("services");
 });
 export default router;
